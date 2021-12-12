@@ -6,14 +6,22 @@ import { HttpClientModule } from '@angular/common/http';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { ApiRestProvider } from 'src/providers/api-rest/api-rest';
 
+import { ModalModule } from 'ngx-bootstrap/modal';
+import { ModalComponent } from 'src/components/modal/modal.component';
+import { CarouselModule } from 'ngx-bootstrap/carousel';
+
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    ModalComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
-    NgxSpinnerModule
+    NgxSpinnerModule,
+    ModalModule.forRoot(),
+    CarouselModule
+
   ],
   providers: [ApiRestProvider],
   bootstrap: [AppComponent]

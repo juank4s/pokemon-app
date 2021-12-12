@@ -1,48 +1,69 @@
-<div class="pokemon">
-
-  <div class="row pokemon__img">
-    <div class="col-12 text-center">
-      <img src={{this.pokemon.photo}}>
+<div class="container-fluid">
+  <div class="pokemon">
+    <div class="row">
+      <div class="col-12 text-center">
+        <img class="pokemon__img" src="{{ this.pokemon.photo }}" />
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12 text-center">
+        <h1>{{ this.pokemon.name }}</h1>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12 text-center">
+        <h6 class="d-inline">Weight:</h6>
+        <p class="d-inline">{{ this.pokemon.weight }}</p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12 text-center">
+        <h6 class="d-inline">Abilities:</h6>
+        <p
+          class="d-inline"
+          *ngFor="let ability of this.pokemon.abilities; let i = index"
+        >
+          <ng-container
+            *ngIf="i < this.pokemon.abilities.length - 1; else lastAbility"
+          >
+            {{ ability }},
+          </ng-container>
+          <ng-template #lastAbility> {{ ability }}. </ng-template>
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12 text-center">
+        <h6 class="d-inline">Types:</h6>
+        <p
+          class="d-inline"
+          *ngFor="let type of this.pokemon.types; let i = index"
+        >
+          <ng-container
+            *ngIf="i < this.pokemon.abilities.length - 1; else lastAbility"
+          >
+            {{ type }},
+          </ng-container>
+          <ng-template #lastAbility> {{ type }}. </ng-template>
+        </p>
+      </div>
+    </div>
+    <div class="row mt-3">
+      <div class="col-12 text-center">
+        <button class="button-style" (click)="previousPokemon()">
+          <span>Previous</span>
+        </button>
+      </div>
+      <div class="col-12 text-center">
+        <button class="button-style" (click)="viewDetails(this.pokemon)">
+          <span>View details</span>
+        </button>
+      </div>
+      <div class="col-12 text-center">
+        <button class="button-style" (click)="nextPokemon()">
+          <span>Next</span>
+        </button>
+      </div>
     </div>
   </div>
-  <div class="row pokemon__name">
-    <div class="col-12">
-      <h1>{{this.pokemon.name}}</h1>
-    </div>
-  </div>
-  <div class="row pokemon__weight">
-    <div class="col-12">
-      <h6>Weight</h6>
-      <p>{{this.pokemon.weight}}</p>
-    </div>
-  </div>
-  <div class="row pokemon__ability">
-    <div class="col-12">
-      <h6>Abilities</h6>
-      <tr *ngFor="let ability of this.pokemon.abilities">
-        <td>{{ability}}</td>
-      </tr>
-    </div>
-  </div>
-  <div class="row pokemon__types">
-    <div class="col-12">
-      <h6>Types</h6>
-      <tr *ngFor="let type of this.pokemon.types">
-        <td>{{type}}</td>
-      </tr>
-    </div>
-  </div>
-  <div>
-    <a (click)="previousPokemon()">
-      <span>Previous</span>
-    </a>
-    <a (click)="viewDetails(this.pokemon.id)">
-      <span>View details</span>
-    </a>
-    <a (click)="nextPokemon()">
-      <span>Next</span>
-    </a>
-  </div>
-
-
 </div>

@@ -1,0 +1,98 @@
+<div class="modal-header">
+  <h4 class="modal-title pull-left">{{ this.pokemonDetail.pokemon?.name }}</h4>
+</div>
+<div class="modal-body">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-6 modal-separator">
+        <div class="row">
+          <div class="col-12 text-center">
+            <img
+              class="pokemon__img"
+              [src]="this.pokemonDetail.pokemon?.photo"
+            />
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12 text-center">
+            <h1>{{ this.pokemonDetail.pokemon?.name }}</h1>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12 text-center">
+            <h6 class="d-inline">Description: </h6>
+            <p class="d-inline">{{ this.pokemonDetail?.description}}</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12 text-center">
+            <h6 class="d-inline">Weight: </h6>
+            <p class="d-inline">{{ this.pokemonDetail.pokemon?.weight }}</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12 text-center">
+            <h6 class="d-inline">Abilities:</h6>
+            <p
+            class="d-inline"
+            *ngFor="let ability of this.pokemonDetail.pokemon?.abilities; let i = index"
+          >
+            <ng-container
+              *ngIf="i < this.pokemonDetail.pokemon?.abilities.length - 1; else lastAbility"
+            >
+              {{ ability }},
+            </ng-container>
+            <ng-template #lastAbility> {{ ability }}. </ng-template>
+          </p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12 text-center">
+            <h6 class="d-inline">Types: </h6>
+            <p
+            class="d-inline"
+            *ngFor="let type of this.pokemonDetail.pokemon?.types; let i = index"
+          >
+            <ng-container
+              *ngIf="i < this.pokemonDetail.pokemon?.abilities.length - 1; else lastAbility"
+            >
+              {{ type }},
+            </ng-container>
+            <ng-template #lastAbility> {{ type }}. </ng-template>
+          </p>
+          </div>
+        </div>
+      </div>
+      <div class="col-6">
+        <carousel class="text-center">
+          <h2>Evolutions</h2>
+          <slide *ngFor="let evolution of this.pokemonDetail.evolutions">
+            <div class="text-center">
+              <img
+                [src]="evolution.photo"
+                [alt]="evolution.name"
+                class="slide-img"
+              />
+            </div>
+            <div class="row">
+              <div class="col-12 text-center">
+                <h1>{{ evolution.name }}</h1>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-12 text-center">
+                <h6 class="d-inline">Weight:</h6>
+                <p class="d-inline">{{ evolution.weight }}</p>
+              </div>
+            </div>
+          </slide>
+        </carousel>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-default" (click)="modalService.hide()">
+    Close
+  </button>
+</div>

@@ -1,0 +1,11 @@
+.pokemon__img {
+  width: 70%;
+}
+.modal-separator {
+  border-right: 1px solid black;
+}
+.slide-img {
+  margin: auto;
+  display: block;
+  width: 70%;
+}
