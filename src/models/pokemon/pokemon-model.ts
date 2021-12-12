@@ -1,17 +1,17 @@
-export class MessageModel {
-    id: string;
-    text: string;
-    attach: string;
-    img: string;
-    created: string;
-    senderId: string;
+export class PokemonModel {
+    id: number;
+    name: string;
+    photo: string;
+    types: string[];
+    abilities: string[];
+    weight: string;
 
     public constructor() {
-        this.id = '';
-        this.text = '';
-        this.attach = '';
-        this.img = '';
-        this.created = '';
-        this.senderId = '';
+        this.id = 0;
+        this.name = '';
+        this.photo = '';
+        this.types = [];
+        this.abilities = [];
+        this.weight = '';
     }
 }
