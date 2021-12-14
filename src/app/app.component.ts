@@ -52,7 +52,7 @@ export class AppComponent {
   sendGetPokemon() {
     this.spinnerService.show();
     this.apiService
-      .getModelWA('api/v1/pokemon/get-pokemons/'.concat(this.cont.toString()))
+      .getModelWA('api/v1/pokemon/get-pokemon/'.concat(this.cont.toString()))
       .subscribe((result) => {
         this.spinnerService.hide();
         console.log(result);
